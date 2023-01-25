@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+images:
+- name: nginx
+  newName: <private_registry>/nginx
+  newTag: 1.22-alpine
+
+resources:
+- github.com/codefresh-io/csdp-official.git/csdp/hybrid/basic/apps/internal-router?ref=0.1.20
+- internal-router.yaml
