@@ -1,3 +1,4 @@
-image:
-  repository: <private_registry>/frpc
-  tag: "2022.10.09-b0811fd"
+codefresh-tunnel-client:
+  image:
+    repository: <private_registry>/frpc
+    tag: "2022.10.09-b0811fd"
