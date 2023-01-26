@@ -2,8 +2,14 @@
 
 ## required changes:
 
+1. fork this repository (or copy it in any other way) into your own organization's git provider
 1. replace all occurences of `<private_registry>` with your own docker registry
 1. in `manifests/runtime.yaml`, replace `github.com/codefresh-contrib/internal-runtime-def-example` with your fork (or manual copy) of this repository
+1. get the "Raw" link to `manifests/runtime.yaml`
+1. run the install command with `--runtime-def`:
+```shell
+cf runtime install <runtime_name> --runtime-def <runtime_yaml_raw_link> ...
+```
 
 image list for runtime 0.1.20:
 ```
