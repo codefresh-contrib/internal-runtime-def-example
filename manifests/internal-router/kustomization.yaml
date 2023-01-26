@@ -8,4 +8,3 @@ images:
 
 resources:
 - github.com/codefresh-io/csdp-official.git/csdp/hybrid/basic/apps/internal-router?ref=0.1.20
-- internal-router.yaml
