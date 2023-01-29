@@ -11,7 +11,17 @@
 cf runtime install <runtime_name> --runtime-def <runtime_yaml_raw_link> ...
 ```
 
-image list for runtime 0.1.20:
+## for unprivileged install:
+
+1. update `<runtime-namespace>` to final value in `manifests/argo-cd/cluster-resources/ns.yaml` and `manifests/argo-cd/cluster-resources/kustomization.yaml`
+1. run the following command with a privileged user:
+```shell
+kustomize build manifests/argo-cd/clsuter-resources | kubectl apply -f -
+```
+3. continue with standard install process
+1. after argo-cd is up and running in the clsuter (and runtime is ready) - edit `manifests/argo-cd/kustomization.yaml` and remove all `$delete` patches (argo-cd can now manage cluster-wide resources)
+
+## image list for runtime 0.1.20:
 ```
 argo-cd
 -------
