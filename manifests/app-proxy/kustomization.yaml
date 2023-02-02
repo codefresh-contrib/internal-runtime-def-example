@@ -8,6 +8,9 @@ images:
 - name: alpine
   newName: <private_registry>/alpine
   newTag: '3.16'
+- name: quay.io/codefresh/applicationset
+  newName: <private_registry>/applicationset
+  newTag: v0.4.2-CR-13254-remove-private-logs
 
 resources:
 - github.com/codefresh-io/csdp-official.git/csdp/hybrid/basic/apps/app-proxy?ref=0.1.20
