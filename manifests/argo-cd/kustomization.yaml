@@ -11,6 +11,9 @@ images:
 - name: quay.io/codefresh/redis
   newName: <private_registry>/redis
   newTag: 7.0.4-alpine
+- name: quay.io/codefresh/applicationset
+  newName: <private_registry>/applicationset
+  newTag: v0.4.2-CR-13254-remove-private-logs
 
 patches:
 # Istio protocol selection: https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
