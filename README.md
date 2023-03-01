@@ -3,8 +3,11 @@
 ## required changes:
 
 1. fork this repository (or copy it in any other way) into your own organization's git provider
-1. replace all occurences of `<private_registry>` with your own docker registry
-1. in `manifests/runtime.yaml`, replace `github.com/codefresh-contrib/internal-runtime-def-example` with your fork (or manual copy) of this repository
+1. run the `init.sh` script with the following flags:
+    * -r <GIT_REPO> - the private server+repository where you pushed this example. ex: "https://github.my-enterprise.com/some-org/internal-runtime-def-example"
+    * -d <DOCKER_REGISTRY> - the private docker registry that contains all the required images. ex: "gcr.io/my-enterprise/codefresh-io"
+    * -h <HELM_MUSEUM> - the private helm museum where the `codefresh-tunnel-client` chart was pushed. only needed for ingressless runtime installs, not required for Ingress installs.
+    * -f - supply this optional flag to flatten the kustomizations, instead of leaving references to `https://github.com/codefresh-io/csdp-official`
 1. get the "Raw" link to `manifests/runtime.yaml`
 1. run the install command with `--runtime-def`:
 ```shell
