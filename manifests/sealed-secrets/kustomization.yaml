@@ -4,7 +4,6 @@ kind: Kustomization
 images:
 - name: quay.io/codefresh/sealed-secrets-controller
   newName: <private_registry>/sealed-secrets-controller
-  newTag: v0.17.5
 
 resources:
 - https://github.com/codefresh-io/csdp-official.git/csdp/hybrid/basic/apps/sealed-secrets?ref=0.1.20

@@ -4,7 +4,6 @@ kind: Kustomization
 images:
 - name: quay.io/codefresh/argo-events
   newName: <private_registry>/argo-events
-  newTag: v1.7.2-cap-CR-14600
 
 patchesStrategicMerge:
 - |-

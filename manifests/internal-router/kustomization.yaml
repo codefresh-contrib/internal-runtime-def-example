@@ -4,7 +4,6 @@ kind: Kustomization
 images:
 - name: nginx
   newName: <private_registry>/nginx
-  newTag: 1.22-alpine
 
 resources:
 - https://github.com/codefresh-io/csdp-official.git/csdp/hybrid/basic/apps/internal-router?ref=0.1.20

@@ -4,7 +4,6 @@ kind: Kustomization
 images:
 - name: quay.io/codefresh/argo-rollouts
   newName: <private_registry>/argo-rollouts
-  newTag: v1.2.0-cap-CR-10626
 
 resources:
 - https://github.com/codefresh-io/csdp-official.git/csdp/hybrid/basic/apps/argo-rollouts?ref=0.1.20

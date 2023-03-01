@@ -4,10 +4,8 @@ kind: Kustomization
 images:
 - name: quay.io/codefresh/cap-app-proxy
   newName: <private_registry>/cap-app-proxy
-  newTag: 1.2056.0
 - name: alpine
   newName: <private_registry>/alpine
-  newTag: '3.16'
 
 resources:
 - https://github.com/codefresh-io/csdp-official.git/csdp/hybrid/basic/apps/app-proxy?ref=0.1.20

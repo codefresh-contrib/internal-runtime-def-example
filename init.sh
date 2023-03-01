@@ -4,7 +4,7 @@ FLATTEN=false
 
 echo "USAGE: $0 -r <GIT_REPO> -d <DOCKER_REGISTRY> [-h <HELM_MUSEUM> -f]"
 
-while getopts ':r:d:h:f' OPTION; do
+while getopts 'r:d:h:f' OPTION; do
   case "$OPTION" in
     r) GIT_REPO=$OPTARG ;;
     d) DOCKER_REGISTRY=$OPTARG ;;
@@ -24,6 +24,7 @@ update_internal_refs() {
 update_docker_registr() {
   echo "updating docker registry in all kustomization.yaml patches"
   find . -type f -name "kustomization.yaml" | xargs sed -i '' 's@<private_registry>@'"${DOCKER_REGISTRY}"@'g' manifests/app-proxy/kustomization.yaml
+  sed -i '' 's@<private_registry>@'"${DOCKER_REGISTRY}"@'g' manifests/codefresh-tunnel-client/values.yaml
 }
 
 update_helm_museum() {
@@ -32,7 +33,6 @@ update_helm_museum() {
 }
 
 flatten() {
-  echo "flattening kustomizations"
   local KUSTOMIZATIONS=()
   while IFS=  read -r -d $'\0'; do
     KUSTOMIZATIONS+=("$REPLY")
@@ -42,7 +42,9 @@ flatten() {
     local COMPONENT_DIR=$(dirname ${i})
     local INSTALL_YAML=${COMPONENT_DIR}/install.yaml
     if [ ! -f ${INSTALL_YAML} ]; then
-      kustomize build ${COMPONENT_DIR} > ${INSTALL_YAML}
+      echo "flattening ${i}"
+      local RESOURCE=$(cat ${i} | grep https://github.com/codefresh.io/csdp.official)
+      kustomize build ${RESOURCE:2} > ${INSTALL_YAML}
       sed -i '' 's@- https://github\.com/codefresh-io/csdp-official\.git/.*@- install.yaml@g' ${i}
     fi
   done

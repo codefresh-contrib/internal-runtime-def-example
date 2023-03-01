@@ -4,16 +4,12 @@ kind: Kustomization
 images:
 - name: quay.io/codefresh/argocd
   newName: <private_registry>/argocd
-  newTag: v2.4.15-cap-CR-15677-rollout-rollback
 - name: ghcr.io/dexidp/dex
   newName: <private_registry>/dex
-  newTag: v2.35.3-distroless
 - name: quay.io/codefresh/redis
   newName: <private_registry>/redis
-  newTag: 7.0.4-alpine
 - name: quay.io/codefresh/applicationset
   newName: <private_registry>/applicationset
-  newTag: v0.4.2-CR-13254-remove-private-logs
 
 patches:
 # Istio protocol selection: https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
@@ -27,5 +23,6 @@ patches:
       path: /spec/ports/0/appProtocol
       value: tcp
 
+namespace: default
 resources:
 - https://github.com/codefresh-io/csdp-official.git/csdp/hybrid/basic/apps/argo-cd?ref=0.1.20
