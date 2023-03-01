@@ -28,4 +28,4 @@ patches:
       value: tcp
 
 resources:
-- github.com/codefresh-io/csdp-official/csdp/hybrid/basic/apps/argo-cd?ref=0.1.20
+- https://github.com/codefresh-io/csdp-official.git/csdp/hybrid/basic/apps/argo-cd?ref=0.1.20

@@ -24,4 +24,4 @@ patches:
       value: <private_registry>/argoexec:v3.4-cap-CR-15902
 
 resources:
-- github.com/codefresh-io/csdp-official.git/csdp/hybrid/basic/apps/argo-workflows?ref=0.1.20
+- https://github.com/codefresh-io/csdp-official.git/csdp/hybrid/basic/apps/argo-workflows?ref=0.1.20

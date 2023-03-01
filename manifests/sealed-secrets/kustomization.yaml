@@ -7,4 +7,4 @@ images:
   newTag: v0.17.5
 
 resources:
-- github.com/codefresh-io/csdp-official.git/csdp/hybrid/basic/apps/sealed-secrets?ref=0.1.20
+- https://github.com/codefresh-io/csdp-official.git/csdp/hybrid/basic/apps/sealed-secrets?ref=0.1.20

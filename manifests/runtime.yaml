@@ -6,30 +6,30 @@ metadata:
 spec:
   requiredCLIVersion: ^0.1.0
   version: 0.1.20
-  bootstrapSpecifier: github.com/codefresh-contrib/internal-runtime-def-example/manifests/argo-cd
+  bootstrapSpecifier: https://github.com/codefresh-contrib/internal-runtime-def-example.git/manifests/argo-cd
   components:
   - name: events
     type: kustomize
-    url: github.com/codefresh-contrib/internal-runtime-def-example/manifests/argo-events
+    url: https://github.com/codefresh-contrib/internal-runtime-def-example.git/manifests/argo-events
     wait: true
   - name: rollouts
     type: kustomize
-    url: github.com/codefresh-contrib/internal-runtime-def-example/manifests/argo-rollouts
+    url: https://github.com/codefresh-contrib/internal-runtime-def-example.git/manifests/argo-rollouts
   - name: workflows
     type: kustomize
-    url: github.com/codefresh-contrib/internal-runtime-def-example/manifests/argo-workflows
+    url: https://github.com/codefresh-contrib/internal-runtime-def-example.git/manifests/argo-workflows
   - name: app-proxy
     type: kustomize
-    url: github.com/codefresh-contrib/internal-runtime-def-example/manifests/app-proxy
+    url: https://github.com/codefresh-contrib/internal-runtime-def-example.git/manifests/app-proxy
     syncWave: 9
   - name: internal-router
     type: kustomize
-    url: github.com/codefresh-contrib/internal-runtime-def-example/manifests/internal-router
+    url: https://github.com/codefresh-contrib/internal-runtime-def-example.git/manifests/internal-router
     syncWave: 10
   - name: sealed-secrets
     type: kustomize
-    url: github.com/codefresh-contrib/internal-runtime-def-example/manifests/sealed-secrets
+    url: https://github.com/codefresh-contrib/internal-runtime-def-example.git/manifests/sealed-secrets
   - name: codefresh-tunnel-client
     type: helm
-    url: github.com/codefresh-contrib/internal-runtime-def-example/manifests/codefresh-tunnel-client
+    url: https://github.com/codefresh-contrib/internal-runtime-def-example.git/manifests/codefresh-tunnel-client
     feature: ingressless

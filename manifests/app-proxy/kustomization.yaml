@@ -10,4 +10,4 @@ images:
   newTag: '3.16'
 
 resources:
-- github.com/codefresh-io/csdp-official.git/csdp/hybrid/basic/apps/app-proxy?ref=0.1.20
+- https://github.com/codefresh-io/csdp-official.git/csdp/hybrid/basic/apps/app-proxy?ref=0.1.20
