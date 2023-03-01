@@ -14,14 +14,14 @@
 cf runtime install <runtime_name> --runtime-def <runtime_yaml_raw_link> ...
 ```
 
-image list for runtime 0.1.20:
+image list for runtime 0.1.24:
 ```
 argo-cd
 -------
-quay.io/codefresh/argocd:v2.4.15-cap-CR-15677-rollout-rollback
+quay.io/codefresh/argocd:v2.6.0-cap-CR-fix-rollout-rollback
 quay.io/codefresh/applicationset:v0.4.2-CR-13254-remove-private-logs
-ghcr.io/dexidp/dex:v2.35.3-distroless
-quay.io/codefresh/redis:7.0.4-alpine
+ghcr.io/dexidp/dex:v2.35.3
+quay.io/codefresh/redis:7.0.7-alpine
 
 argo-events
 -----------
@@ -37,7 +37,7 @@ nats:2.8.2-alpine
 
 argo-rollouts
 -------------
-quay.io/codefresh/argo-rollouts:v1.2.0-cap-CR-10626
+quay.io/codefresh/argo-rollouts:v1.4.0-cap-sw
 
 argo-workflows
 --------------
@@ -47,7 +47,7 @@ quay.io/codefresh/workflow-controller:v3.4-cap-CR-15902
 
 app-proxy
 ---------
-quay.io/codefresh/cap-app-proxy:1.2056.0
+quay.io/codefresh/cap-app-proxy:1.2098.1
 alpine:3.16
 
 internal-router
