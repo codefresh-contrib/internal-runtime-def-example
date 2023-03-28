@@ -3,7 +3,7 @@ kind: Kustomization
 
 images:
 - name: quay.io/codefresh/cap-app-proxy
-  newName: <private_registry>/cap-app-proxy
+  newName: <private_registry>/codefresh/cap-app-proxy
 - name: alpine
   newName: <private_registry>/alpine
 

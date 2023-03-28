@@ -3,13 +3,13 @@ kind: Kustomization
 
 images:
 - name: quay.io/codefresh/argocd
-  newName: <private_registry>/argocd
+  newName: <private_registry/codefresh/argocd
 - name: ghcr.io/dexidp/dex
-  newName: <private_registry>/dex
+  newName: <private_registry>/dexidp/dex
 - name: quay.io/codefresh/redis
-  newName: <private_registry>/redis
+  newName: <private_registry>/codefresh/redis
 - name: quay.io/codefresh/applicationset
-  newName: <private_registry>/applicationset
+  newName: <private_registry>/codefresh/applicationset
 
 patches:
 # Istio protocol selection: https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
