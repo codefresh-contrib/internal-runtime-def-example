@@ -4,6 +4,8 @@ FLATTEN=false
 
 echo "USAGE: $0 -r <GIT_REPO> -d <DOCKER_REGISTRY> [-h <HELM_MUSEUM> -f]"
 
+
+
 while getopts 'r:d:h:f' OPTION; do
   case "$OPTION" in
     r) GIT_REPO=$OPTARG ;;
@@ -16,20 +18,28 @@ shift "$(($OPTIND -1))"
 
 : ${GIT_REPO:?Missing -r} ${DOCKER_REGISTRY:?Missing -d}
 
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  SED_FLAGS="-i"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  SED_FLAGS="-i ''"
+else
+  echo "UNSUPPORTED OS: ${OSTYPE}"
+fi
+
 update_internal_refs() {
   echo "updating internal refs in manifests/runtime.yaml"
-  sed -i '' 's@https://github\.com/codefresh-contrib/internal-runtime-def-example\.git@'"${GIT_REPO}"'@g' manifests/runtime.yaml
+  sed ${SED_FLAGS} 's@https://github\.com/codefresh-contrib/internal-runtime-def-example\.git@'"${GIT_REPO}"'@g' manifests/runtime.yaml
 }
 
 update_docker_registr() {
   echo "updating docker registry in all kustomization.yaml patches"
-  find . -type f -name "kustomization.yaml" | xargs sed -i '' 's@<private_registry>@'"${DOCKER_REGISTRY}"@'g' manifests/app-proxy/kustomization.yaml
-  sed -i '' 's@<private_registry>@'"${DOCKER_REGISTRY}"@'g' manifests/codefresh-tunnel-client/values.yaml
+  find . -type f -name "kustomization.yaml" | xargs sed ${SED_FLAGS} 's@<private_registry>@'"${DOCKER_REGISTRY}"@'g' manifests/app-proxy/kustomization.yaml
+  sed ${SED_FLAGS} 's@<private_registry>@'"${DOCKER_REGISTRY}"@'g' manifests/codefresh-tunnel-client/values.yaml
 }
 
 update_helm_museum() {
   echo "updating helm museum in codefresh-tunnel-client chart.yaml"
-  sed -i '' 's@https://chartmuseum\.codefresh\.io@'"${HELM_MUSEUM}"'@g' manifests/codefresh-tunnel-client/chart.yaml
+  sed ${SED_FLAGS} 's@https://chartmuseum\.codefresh\.io@'"${HELM_MUSEUM}"'@g' manifests/codefresh-tunnel-client/chart.yaml
 }
 
 flatten() {
@@ -45,7 +55,7 @@ flatten() {
       echo "flattening ${i}"
       local RESOURCE=$(cat ${i} | grep https://github.com/codefresh.io/csdp.official)
       kustomize build ${RESOURCE:2} > ${INSTALL_YAML}
-      sed -i '' 's@- https://github\.com/codefresh-io/csdp-official\.git/.*@- install.yaml@g' ${i}
+      sed ${SED_FLAGS} 's@- https://github\.com/codefresh-io/csdp-official\.git/.*@- install.yaml@g' ${i}
     fi
   done
 }
